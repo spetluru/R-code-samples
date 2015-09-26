@@ -1,0 +1,30 @@
+repeat
+  { 
+     x<-data.frame(Hospital = character(),state=character(),mean=numeric(),rank=numeric())
+    bad<-min(fin[,3])
+    if(is.na(bad))
+      break;
+    for(i in seq_len(nrow(fin)))
+    {
+      if(fin[i,3]==bad)
+      {
+         x<-rbind(x,fin[i,])
+         fin[i,3]<-NA
+      }
+    }
+    v<-rbind(v,sort(x))
+  }
+
+
+ if(num=="best")
+     x<-ft[1,1]
+  else if(num=="worst")
+     x<-ft[length(ft),1]
+  else num<-as.numeric(num)
+  {
+     if(num<length(ft))
+       x<-ft[num,1]
+    else x<-NA
+   
+  }
+   x
